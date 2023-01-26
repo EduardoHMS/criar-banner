@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Projeto Giras 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js"></script>
+</head>
+<body>
+    <div id="formulario">
+    <h1>Qual a Gira?</h1>
+    <form id="f1">
+        <label for="sessao" id="l1">Qual a Sessão</label><br>
+        <select name="sessao" id="sessao">
+            <option value="vazio" selected> </option>
+            <option value="baiano.png">Baiano & Exu</option>
+            <option value="caboclo.png">Caboclo & Exu</option>
+            <option value="marinheiro.png">Marinheiro</option>
+            <option value="exu.png">Exu & PomboGira</option>
+            <option value="pretovelho.png">Preto Velho & Exu</option>
+            <option value="ere.png">Erê</option>
+        </select>
+
+        <br>
+
+        <label for="data" id="l2">Qual a Data</label><br>
+        <input type="date" name="data" id="data">
+
+        <br>
+
+        <label for="horario" id="l3">Qual o Horário</label><br>
+        <input type="time" name="horario" id="horario">
+
+        <br>
+
+        <input type="button" value="Fazer Banner" onclick="fazerbanner()">
+    </form>
+    </div>
+    <script src="js/index.js"></script>
+</body>
+</html>

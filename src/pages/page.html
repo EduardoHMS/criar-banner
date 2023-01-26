@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download</title>
+  <script src="../../js/index.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin: 0;
+      background-color: aquamarine;
+    }
+    @media (min-width: 300px) {
+      #can {
+        margin: 10px 50px;
+        width: 100%;
+        height: 100%;
+      }
+      #boto {
+        margin: 10px 10px;
+        width: 100%;
+      }
+      #boto button {
+        width: 30%;
+        border-radius: 20px;
+        border: none;
+        background-color: rgb(71, 71, 71);
+        padding: 10px;
+        color: white;
+        font: 'Anton';
+        font-size: 18px;
+        font-weight: bold;
+      }
+      canvas {
+        display: block;
+        width: 50% !important;
+        height: 50% !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="media">
+  <div id="boto">
+    <button onclick="recarregarAPagina()">Refresh</button>
+    <button onclick="downloadCanvas()">Download</button>
+  </div>
+  <div id="can">
+    <canvas id="myCanvas" width="1080px" height="1080px"></canvas>
+  </div>
+  </div>
+
+  <script>
+    function recarregarAPagina() {
+      window.location.reload();
+    }
+    var nome = localStorage.getItem("Image");
+    var gira = localStorage.getItem("nomeGira");
+    var data = localStorage.getItem("data");
+    var horas = localStorage.getItem("horas");
+    var arr = data.split('-');
+    arr.shift();
+
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+    var image = new Image();
+    image.src = `../img/${nome}`;
+    image.onload = function () {
+      ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+      ctx.font = "120px Anton";
+      ctx.fillStyle = '#fff';
+      ctx.fillText(gira, 124, 327);
+
+      ctx.font = "60px Anton";
+      ctx.fillStyle = '#fff';
+      ctx.fillText(`${arr[1]}/${arr[0]}`, 220, 415);
+
+      ctx.font = "60px Anton";
+      ctx.fillStyle = '#fff';
+      ctx.fillText(horas, 220, 505);
+    }
+
+    function downloadCanvas() {
+      var link = document.createElement("a");
+      link.download = `giradehoje.png`;
+      link.href = canvas.toDataURL();
+      link.click();
+    }
+  </script>
+</body>
+
+</html>
